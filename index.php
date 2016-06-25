@@ -3,40 +3,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Prestamos TBD1 | Kenystev | FireBird</title>
+	<title>AHORRO123 | Kenystev</title>
 </head>
 <body>
-	<?
-		$query = "SELECT EMP_NO, FIRST_NAME, LAST_NAME FROM EMPLOYEE";
-		$res = ibase_query($con, $query);
-		if (!$res) {
-			echo "No se puede mostrar los datos desde la consulta $query !!";
-			exit;
-		}
-		echo "<table id='tabla'>\n";
-		echo "
-			<tr>
-				<td>NO. EMPLEADO</td>
-				<td>NOMBRE</td>
-				<td>APELLIDO</td>
-			</tr>
-
-			<tr>
-				<td><hr></td>
-				<td><hr></td>
-				<td><hr></td>
-			</tr>
-			\n";
-		while ($row=ibase_fetch_object($res)) {
-			echo "
-				<tr>
-					<td>$row->EMP_NO</td>
-					<td>$row->FIRST_NAME</td>
-					<td>$row->LAST_NAME</td>
-				</tr>\n
-			";
-		}
-		echo "</table>\n";
-	?>
+	<div>
+	        <center>
+	       <fieldset >
+	           <legend>Ingrese sus datos</legend>
+	        <h1>LOGIN</h1>
+	       
+	        <form action="roles.php" method="POST">
+	            Usuario: <input type="text" name="user" required><br>
+	            Password:<input type="password" name="password" required><br>
+	        <input type="submit" value="Entrar">
+	        
+	        </form>
+	        </fieldset>
+	        </center>
+	       
+	</div>
 </body>
 </html>

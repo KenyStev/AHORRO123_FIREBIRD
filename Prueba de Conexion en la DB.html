@@ -1,0 +1,71 @@
+<? include ("conexion.php") ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Prestamos TBD1 | Kenystev | FireBird</title>
+</head>
+<body>
+	<?
+		$query = "SELECT ID_EMPLEADO, NOMBRE_N1, NOMBRE_A1 FROM EMPLEADOS";
+		$res = ibase_query($con, $query);
+		if (!$res) {
+			echo "No se puede mostrar los datos desde la consulta $query !!";
+			exit;
+		}
+		echo "<table id='tabla'>\n";
+		echo "
+			<tr>
+				<td>NO. EMPLEADO</td>
+				<td>NOMBRE</td>
+				<td>APELLIDO</td>
+			</tr>
+
+			<tr>
+				<td><hr></td>
+				<td><hr></td>
+				<td><hr></td>
+			</tr>
+			\n";
+		while ($row=ibase_fetch_object($res)) {
+			echo "
+				<tr>
+					<td>$row->ID_EMPLEADO</td>
+					<td>$row->NOMBRE_N1</td>
+					<td>$row->NOMBRE_A1</td>
+				</tr>\n
+			";
+		}
+		echo "</table>\n";
+	?>
+</body>
+</html>
+
+
+<!--<?php
+        $sql = "SELECT U.ID_USUARIO ,R.NOMBRE,R.ID_ROL FROM ROLES R 
+                INNER JOIN  ROL_USUARIO UR ON UR.ID_ROL = R.ID_ROL
+                INNER JOIN (SELECT US.ID_USUARIO FROM USUARIO US 
+                    WHERE US.ID_USUARIO = '".$_POST['user']."' )U ON UR.ID_USUARIO = U.ID_USUARIO";
+           
+            $resultado=fbird_query($con,$sql);
+            
+            $cantidad = fbird_num_fields($resultado);
+            
+            if($cantidad=0){
+              echo "USUARIO SIN NUNGUN ROL";            
+               header("Location:index.php");
+               echo "<script>alert('NOOOOOOOOOOOOOOOOOOOO');</script>";
+           }
+           echo "<table border = 1 rule = nome width = 600px cellpadding = 5px id = tabla>\n";
+           echo " <tr>"
+               . " <td align = center><b>CON QUE ROL DESEA ENTRAR</b><td>"
+               . "</tr>";
+           while($row = fbird_fetch_object($resultado)){
+           echo " <tr>"
+               . " <td align = center><a href='privilegios_usuario.php?id=$row->ID_USUARIO&rol=$row->ID_ROL'>$row->NOMBRE_ROL</a></td>"
+               . "</tr>\n";
+           }
+           echo "</table>\n";
+             
+         ?>-->
