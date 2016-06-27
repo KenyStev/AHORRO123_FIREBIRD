@@ -54,7 +54,7 @@ if (isset($_POST["btn_modificar"]))
 	<p>Modificar información</p>
 	<hr width=50%>
 	
-	<form name="fe" action="" method="POST">
+	<form name="fe" action="modificar_privilegio.php" method="POST">
 		<table id='tabla' cellpadding=7>
         <!-- Nombre del Privilegio -->
         <tr>
