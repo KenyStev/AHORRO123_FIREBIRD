@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Roles | AHORRO123 | KENYSTEV</title>
+	<title>Privilegios | AHORRO123 | KENYSTEV</title>
 </head>
 <body>
 	<?
-		$query = "SELECT * FROM SP_ROLES_READ";
+		$query = "SELECT * FROM SP_PRIVILEGIOS_READ";
 		$res = ibase_query($con, $query);
 		if (!$res) {
 			echo "No se puede mostrar los datos desde la consulta $query !!";
@@ -17,7 +17,7 @@
 		echo "
 			<tr>
 				<td>NO.</td>
-				<td>ROL</td>
+				<td>PRIVILEGIO</td>
 			</tr>
 
 			<tr>
@@ -28,9 +28,9 @@
 		while ($row=ibase_fetch_object($res)) {
 			echo "
 				<tr>
-					<td>$row->ID_ROL</td>
+					<td>$row->ID_PRIVI</td>
 					<td>$row->NOMBRE</td>
-					<td align=center><a href='modificar_rol.php?id=$row->ID_ROL'>Actualizar</a> | <a href='eliminar_rol.php?id=$row->ID_ROL'>Eliminar</a></td>
+					<td align=center><a href='modificar_privilegio.php?id=$row->ID_PRIVI'>Actualizar</a> | <a href='eliminar_privilegio.php?id=$row->ID_PRIVI'>Eliminar</a></td>
 				</tr>\n
 			";
 		}

@@ -4,7 +4,7 @@
 		include ("conexion.php");
 		$id= $_GET['id'];
 		
-		$query= "EXECUTE PROCEDURE SP_EXTERNOS_DELETE(".$id.")";
+		$query= "EXECUTE PROCEDURE SP_PRIVILEGIOS_DELETE(".$id.")";
 		$res=ibase_query($con, $query);
 		if(!res)
 		{echo 'No se pueden mostrar los datos desde la consulta: $query !!';
@@ -12,5 +12,5 @@
 	?>
 
 	alert("El registro ha sido eliminado");
-	window.location.href="externos.php";	
+	window.location.href="privilegios.php";
 </script>

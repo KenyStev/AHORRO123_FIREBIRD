@@ -44,7 +44,7 @@ if (isset($_POST["btn_modificar"]))
 		echo "<script> alert('Un Externo ha sido Actualizado');</script>";
 		?>
 		<script type="text/javascript">
-		window.location.href="externos.php";
+		window.location.href="externos.php";*
 		</script>
 		<?
 		
