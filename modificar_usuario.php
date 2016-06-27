@@ -6,7 +6,7 @@
 
 <?php
 		$ide=$_GET['id'];
-		$query= "SELECT * FROM ROLES P WHERE P.ID_ROL=$ide";
+		$query= "SELECT * FROM USUARIO U WHERE U.ID_USUARIO='$ide'";
 		$res=ibase_query($con, $query);
 		if(!res)
 		{echo 'No se pueden mostrar los datos desde la consulta: $query !!';
@@ -19,19 +19,19 @@ if (isset($_POST["btn_modificar"]))
     $btn=$_POST["btn_modificar"];
     if($btn == "Guardar Cambios")
     {
-		$rol=$_POST['rol'];
+		$clave=$_POST['clave'];
 		
-		$query = "EXECUTE PROCEDURE SP_ROLES_UPDATE('$ide','$rol','SYSDBA')";
+		$query = "EXECUTE PROCEDURE SP_USUARIO_UPDATE('$ide','$clave','SYSDBA')";
 		
 		$re=ibase_query($con, $query);
 		if(!re)
 		{echo 'No se pueden mostrar los datos desde la consulta: $query !!';
 		exit;}
 		
-		echo "<script> alert('Un rol ha sido Actualizado');</script>";
+		echo "<script> alert('Un Usuario ha sido Actualizado');</script>";
 		?>
 		<script type="text/javascript">
-		window.location.href="roles.php";
+		window.location.href="usuarios.php";
 		</script>
 		<?
 		
@@ -44,7 +44,7 @@ if (isset($_POST["btn_modificar"]))
 <html>
 <head>
 
-<title>Modificar rol: </title>
+<title>Modificar Usuario: </title>
 
 </head>
 	
@@ -54,17 +54,15 @@ if (isset($_POST["btn_modificar"]))
 	<p>Modificar información</p>
 	<hr width=50%>
 	
-	<form name="fe" action="modificar_rol.php" method="POST">
+	<form name="fe" action="modificar_usuario.php" method="POST">
 		<table id='tabla' cellpadding=7>
-        <!-- Nombre del rol -->
+        <!-- Password del Usuario -->
         <tr>
-            <td align="center"><b>Rol:  </b></td><td><label><input name="rol" type="text" size=35 value="<?echo $row->NOMBRE?>" style="font-size:18px" required autofocus/></label></td>
+            <td align="center"><b>clave:  </b></td><td><label><input name="clave" type="password" size=35 style="font-size:18px" required autofocus/></label></td>
         </tr>
         </table>
-	<input id='modificar' type="submit" name="btn_modificar" value="Guardar Cambios"/>
-  
-
-</form>
+		<input id='modificar' type="submit" name="btn_modificar" value="Guardar Cambios"/>
+	</form>
 
 </center>	
 </body>
