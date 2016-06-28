@@ -2,9 +2,10 @@
 	
 	<?
 		include ("conexion.php");
+		include ("validar_login.php");
 		$id= $_GET['id'];
 		
-		$query= "EXECUTE PROCEDURE SP_USUARIO_DELETE(".$id.")";
+		$query= "EXECUTE PROCEDURE SP_USUARIO_DELETE('$id')";
 		$res=ibase_query($con, $query);
 		if(!res)
 		{echo 'No se pueden mostrar los datos desde la consulta: $query !!';

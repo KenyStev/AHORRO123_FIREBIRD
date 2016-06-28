@@ -1,4 +1,4 @@
-<? include ("conexion.php") ?>
+<? include ("conexion.php"); include ("validar_login.php"); ?>
 
 <!DOCTYPE html>
 <html>

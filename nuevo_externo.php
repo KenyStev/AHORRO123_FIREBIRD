@@ -1,5 +1,6 @@
 <?
 include('conexion.php');
+include ("validar_login.php");
 
 if (isset($_POST["btn_nuevo_externo"]))
 {

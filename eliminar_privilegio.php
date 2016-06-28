@@ -2,6 +2,7 @@
 	
 	<?
 		include ("conexion.php");
+		include ("validar_login.php");
 		$id= $_GET['id'];
 		
 		$query= "EXECUTE PROCEDURE SP_PRIVILEGIOS_DELETE(".$id.")";

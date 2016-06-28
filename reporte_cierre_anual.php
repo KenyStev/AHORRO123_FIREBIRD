@@ -3,11 +3,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Privilegios | AHORRO123 | KENYSTEV</title>
+	<title>Reporte Cierre Anual | AHORRO123 | KENYSTEV</title>
 </head>
 <body>
 	<?
-		$query = "SELECT * FROM SP_PRIVILEGIOS_READ";
+		$anio=$_GET['anio'];
+		$query = "SELECT * FROM REPORTE_CIERRE_ANUAL(".$anio.")";
 		$res = ibase_query($con, $query);
 		if (!$res) {
 			echo "No se puede mostrar los datos desde la consulta $query !!";
@@ -16,11 +17,17 @@
 		echo "<table id='tabla'>\n";
 		echo "
 			<tr>
-				<td>NO.</td>
-				<td>PRIVILEGIO</td>
+				<td>ID_EMPLEADO</td>
+				<td>NOMBRE</td>
+				<td>INVERSION TOTAL</td>
+				<td>PORCENTAJE</td>
+				<td>GANANCIA</td>
 			</tr>
 
 			<tr>
+				<td><hr></td>
+				<td><hr></td>
+				<td><hr></td>
 				<td><hr></td>
 				<td><hr></td>
 			</tr>
@@ -28,9 +35,11 @@
 		while ($row=ibase_fetch_object($res)) {
 			echo "
 				<tr>
-					<td>$row->ID_PRIVI</td>
+					<td>$row->ID_EMPLEADO</td>
 					<td>$row->NOMBRE</td>
-					<td align=center><a href='modificar_privilegio.php?id=$row->ID_PRIVI'>Actualizar</a> | <a href='eliminar_privilegio.php?id=$row->ID_PRIVI'>Eliminar</a></td>
+					<td>$row->INVERSION_TOTAL</td>
+					<td>$row->PORCENTAJE</td>
+					<td>$row->GANANCIA</td>
 				</tr>\n
 			";
 		}

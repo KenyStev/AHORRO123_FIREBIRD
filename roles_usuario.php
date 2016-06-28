@@ -1,5 +1,6 @@
 <?php
 include ("conexion.php");
+include ("validar_login.php");
 ?>
 <?php
   if($_POST['user'] && $_POST['password']) { 
@@ -17,6 +18,7 @@ include ("conexion.php");
       //localStorage.getItem("current_user");
       //localStorage.removeItem("current_user");
       $_SESSION["current_user"] = $_POST['user'];
+      echo "<script>location.replace('index.php'); </script>";
     }
   }
 ?>
